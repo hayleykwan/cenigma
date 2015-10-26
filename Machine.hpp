@@ -1,13 +1,15 @@
+#include <string>
+
 class Machine{
   
   public:
-    ˜Machine();
-    Machine(const Machine& );
+	Machine(char **argv);
     void run(void);
   
   private:
+    string getInputString();
     int convertToNumber(char input);
     char convertToChar(int number);
-    void print(void);
+    int reflect(int input);
 
-}
+};

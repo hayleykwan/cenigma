@@ -1,17 +1,12 @@
+#include <fstream>;
+#include "Plugboard.hpp"
 
 Plugboard::Plugboard(char* filename){
-  ifstream ifs;
-  string String;
+	ifstream pgfile;
 
-  
 }
 
-if(isspace){
-  //go to next char
-} else {
-  //get a number
-  //concat the previous number
-  //stoi, convert into int
+void swap(){
+
+
 }
-
-

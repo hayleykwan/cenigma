@@ -8,13 +8,23 @@ using namespace std;
 
 int main(int argc, char **argv){
 
-  //read input files
+  if(argc > 1){
 
-  //create new machine
-  
+	  argc--;
 
-  machine.run();
 
+	  //create new machine
+	  Machine machine = new Machine(char **argv);
+
+	  //run the machine
+	  machine.run();
+
+	  //delete machine to free memory after printing
+	  delete machine;
+
+  } else {
+	  //error
+  }
   return 0;
 }
 
