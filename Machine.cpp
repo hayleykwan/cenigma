@@ -11,7 +11,7 @@ using namespace std;
 
 const int ASCII_UPPER_A = 65;
 
-Machine::Machine(char **argv){
+Machine::Machine(int numFiles, char **argv){
 
 }
 

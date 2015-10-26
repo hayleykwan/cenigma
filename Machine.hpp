@@ -3,7 +3,7 @@
 class Machine{
   
   public:
-	Machine(char **argv);
+	Machine(int numFiles, char **argv);
     void run(void);
   
   private:

@@ -2,5 +2,5 @@ class Plugboard{
 
 public:
 	Plugboard::Plugboard(char *filename);
-	void swap();
+	int swap(int index);
 };

@@ -8,13 +8,13 @@ using namespace std;
 
 int main(int argc, char **argv){
 
-  if(argc > 1){
+  if(argc >= 1){
 
 	  argc--;
 
 
 	  //create new machine
-	  Machine machine = new Machine(char **argv);
+	  Machine machine = new Machine(int numFiles, char **argv);
 
 	  //run the machine
 	  machine.run();
@@ -22,8 +22,9 @@ int main(int argc, char **argv){
 	  //delete machine to free memory after printing
 	  delete machine;
 
+
   } else {
-	  //error
+	  throw invalid_argument("Invalid arguments. Require at ")
   }
   return 0;
 }
