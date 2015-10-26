@@ -9,8 +9,8 @@ Rotor::Rotor(){
 	this->canRotate = false;
 	this->numRotation = 0;
 	this->offset = 0;
-//	this->config = vector<int> (26);
-	this->config = new int[26];
+	this->config = vector<int> (26);
+//	this->config = new int[26];
 }
 
 void Rotor::readfile(char *filename){
@@ -22,9 +22,10 @@ void Rotor::readfile(char *filename){
 		while(!rfile.eof()){
 			rfile >> ws;
 			rfile >> index;
-			config[i] = index;
-			i++;
-//			config.push_back(index);
+//			//config array style
+//			config[i] = index;
+//			i++;
+			config.push_back(index);
 		}
 		rfile.close();
 	} else {
