@@ -8,19 +8,21 @@
 
 using namespace std;
 
-Machine::Machine(int argc, char **argv){
+Machine::Machine(int argc, char **argv) {
 	cout << "Welcome to the Enigma machine!" << endl;
-	cout << "Please enter a set of upper case characters for the machine to encrypt." << endl;
+	cout
+			<< "Please enter a set of upper case characters for the machine to encrypt."
+			<< endl;
 
 	this->numRotors = argc - 1;
 	int indexRotor = 0;
 
-	while(argc > 0){
-		if(argc == 1){
+	while (argc > 0) {
+		if (argc == 1) {
 			plugboard.readfile(argv[numRotors]);
 		} else {
 			Rotor rotor;
-			rotor.readFile(argv[indexRotor]);
+			rotor.readfile(argv[indexRotor]);
 			rotors.push_back(rotor);
 			indexRotor++;
 		}
@@ -29,57 +31,65 @@ Machine::Machine(int argc, char **argv){
 	}
 }
 
-string encrypt(string input){
+string Machine::encrypt(string input) {
+	//prepare output string for printing
 
-  //prepare output string for printing
-  string output;
+	string output;
 
-  for (char& c : input){
+	for (char& c : input) {
 
-	  //convert into number
-	  int index = (int)(c) - 'A';
+		//convert into number
+		int index = (int) (c) - 'A';
 
-	  //go through plugboard
-	  index = plugboard.swap(index);
+		//go through plugboard
+		index = plugboard.swap(index);
 
-	  //rotors
-	  if(numRotors > 0){
-		  for (int i = 0 ; i < numRotors ; i++){
-			  index = rotors[i].rotate(index);
-		  }
-	  }
+		//rotors
+		if (numRotors > 0) {
+			for (int i = 0; i < numRotors; i++) {
+				index = rotors[i].rotate(index);
+			}
+		}
 
-      index = reflect(index);
+		index = reflect(index);
 
-      //rotors backward
-      if(numRotors > 0){
-    	  for (int j = numRotors ; j > 0 ; j-- ){
-    		  index = rotors[j].rotateBackwards(index);
+		//rotors backward
+		if (numRotors > 0) {
+			for (int j = numRotors ; j > 0 ; j--) {
+				index = rotors[j].rotateBackwards(index);
 
-    		  if(rotors[j].rotateOneCycle = true){
-    			  rotors[j].numRotation++;
-    			  rotors[j];
-    		  }
+				if (rotors[j].canRotate == true) {
+					rotors[j].numRotation++;
+					rotors[j].offset++;
 
-    	  }
+					if( j+1 < numRotors){
+						if(rotors[j].numRotation % 26 == 25){
+							rotors[j+1].canRotate = true;
+						}
+					}
 
-      }
+					if(j != 0){
+						rotors[j].canRotate = false;
+					}
+				}
+			}
+		}
 
-      //go through plugboard again
-	  index = plugboard.swap(index);
+		//go through plugboard again
+		index = plugboard.swap(index);
 
-	  //convert into upper case character
-	  char c_output = (char)(index + 'A');
+		//convert into upper case character
+		char c_output = (char) (index + 'A');
 
-	  //append to output string
-      output.push_back(c_output);
+		//append to output string
+		output.push_back(c_output);
+	}
 
-      //return for printing
-      return output;
-  }
+	//return for printing
+	return output;
 }
 
 //reflector  
-int reflect(int input){
+int reflect(int input) {
 	return ((input + 13) % 26);
 }

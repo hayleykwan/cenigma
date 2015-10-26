@@ -5,14 +5,13 @@
 
 using namespace std;
 
-vector<int> config;
-
 Rotor::Rotor(){
-	this->rotateOneCycle = false;
-
+	this->canRotate = false;
+	this->numRotation = 0;
+	this->offset = 0;
 }
 
-void readfile(char *filename){
+void Rotor::readfile(char *filename){
 	ifstream rfile;
 	rfile.open(filename, ifstream::in);
 	if(rfile.good()){
@@ -28,12 +27,13 @@ void readfile(char *filename){
 	}
 }
 
-int rotate(int index){
-	return (config[(index + rotation) % 26] - (offset % 26)
-	            + 26) % 26;
+int Rotor::rotate(int index){
+
+	//TODO
+	return 0;
 }
 
-int rotateBackwards(int index){
+int Rotor::rotateBackwards(int index){
 	for(int i = 0 ; i < 26 ; i++){
 		if(index == rotate(i)){
 			return i;

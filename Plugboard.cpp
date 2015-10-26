@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void readfile(char *filename){
+void Plugboard::readfile(char *filename){
 	ifstream pgfile;
 	pgfile.open(filename, ifstream::in);
 
@@ -23,22 +23,18 @@ void readfile(char *filename){
 	}
 }
 
-int swap(int index){
+int Plugboard::swap(int index){
 	for(int i = 0 ; i < config.size(); i++){
-
-		//if char exists in vector
 		if(index == config[i]){
-
 			//if at even index
 			if(i % 2 == 0){
 				//next number
 				return config[i+1];
-
 			} else {
 				//previous number
 				return config[i-1];
 			}
 		}
-		return index;
-	}
+	} //not in vector
+	return index;
 }

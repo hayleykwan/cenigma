@@ -1,17 +1,18 @@
 #ifndef ROTOR_H
 #define ROTOR_H
 
+#include <vector>
+
 class Rotor{
 
 public:
 	Rotor();
-	bool rotateOneCycle;
+	bool canRotate;
 	int numRotation;
-
-	int* config;
 	int offset;
 
-	void readFile(char *filename);
+	void readfile(char *filename);
+	vector<int> config;
 	int rotate(int index);
 	int rotateBackwards(int index);
 
