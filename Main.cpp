@@ -29,8 +29,9 @@ int main(int argc, char **argv){
 		  }
 	  }
 
-	  //run the machine
-	  machine.encrypt(input);
+	  string output = machine.encrypt(input);
+
+	  cout << output << endl;
 
 	  //delete machine to free memory after printing
 	  delete machine;

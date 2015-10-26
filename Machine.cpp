@@ -14,10 +14,11 @@ Machine::Machine(int argc, char **argv){
 
 	rotors = new Rotor[argc-1];
 	int indexRotor = 0;
+	int numRotors = argc - 1;
 
 	while(argc > 0){
 		if(argc == 1){
-			Plugboard *plugboard = new Plugboard(argv[argc-1]);
+			Plugboard *plugboard = new Plugboard(argv[numRotors]);
 		}else{
 			Rotor rotor = new Rotor(argv[indexRotor]);
 			rotors[indexRotor] = rotor;
@@ -28,7 +29,7 @@ Machine::Machine(int argc, char **argv){
 	}
 }
 
-void encrypt(string input){
+string encrypt(string input){
 
   //prepare output string for printing
   string output;
@@ -36,25 +37,34 @@ void encrypt(string input){
   for (char& c : input){
 
 	  //convert into number
-	  int index = convertToNumber(c);
+	  int index = (int)(c) - 'A';
+
+	  convertToNumber(c);
 
 	  //go through plugboard
 	  index = plugboard.swap(index);
 
 	  //rotors
+	  for (int i = 0 ; i < numRotors ; i++){
+		  //rotors[i].rotate;
+		  //mas: index = rotors[i].map(index);
+	  }
 
-      int reflected = reflect(index);
+      int index = reflect(index);
 
-      //rotors
+      //rotors backward
+      for (int j = numRotors ; j > 0 ; j-- ){
+    	  //
+      }
 
-	  reflected = plugboard.swap(reflected);
+	  index = plugboard.swap(index);
  
-      char c_output = convertToNumber(reflected);
+      char c_output = convertToNumber(index);
 
       output.push_back(c_output);
 
   }
-  cout << output << endl;
+//  cout << output << endl;
   
 };
 
