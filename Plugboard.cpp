@@ -9,11 +9,18 @@ vector<int> config;
 
 Plugboard::Plugboard(char* filename){
 	ifstream pgfile(filename);
-	int index;
-	while(!pgfile.eof()){
-		pgfile >> ws;
-		pgfile >> index;
-		config.push_back(index);
+	pgfile.open(filename, ifstream::in);
+
+	if(pgfile.good()){
+		int index;
+		while(!pgfile.eof()){
+			pgfile >> ws;
+			pgfile >> index;
+			config.push_back(index);
+		}
+		pgfile.close();
+	}else {
+		perror("Invalid file");
 	}
 
 }
@@ -34,7 +41,7 @@ int swap(int index){
 				return config[i-1];
 			}
 		}
-		return i;
+		//return i;
 	}
 }
 

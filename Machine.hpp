@@ -2,12 +2,14 @@
 
 class Machine{
   
-  public:
-	Machine(int numFiles, char **argv);
-    void run(void);
+public:
+	Machine(int, char**);
+    void encrypt(char *input);
   
-  private:
-    string getInputString();
+private:
+    Plugboard plugboard;
+    Rotor* rotors;
+
     int convertToNumber(char input);
     char convertToChar(int number);
     int reflect(int input);
