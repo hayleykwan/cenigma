@@ -5,14 +5,11 @@
 #include "Machine.hpp"
 #include "Plugboard.hpp"
 #include "Rotor.hpp"
+#include "Reflector.hpp"
 
 using namespace std;
 
 Machine::Machine(int argc, char **argv) {
-	cout << "Welcome to the Enigma machine!" << endl;
-	cout
-			<< "Please enter a set of upper case characters for the machine to encrypt."
-			<< endl;
 
 	this->numRotors = argc - 1;
 	int indexRotor = 0;
@@ -51,7 +48,9 @@ string Machine::encrypt(string input) {
 			}
 		}
 
-		index = reflect(index);
+		index = reflector.reflect(index);
+
+//		index = reflect(index);
 
 		//rotors backward
 		if (numRotors > 0) {
@@ -62,12 +61,14 @@ string Machine::encrypt(string input) {
 					rotors[j].numRotation++;
 					rotors[j].offset++;
 
-					if( j+1 < numRotors){
+					//rotate the next rotor
+					if(j+1 < numRotors){
 						if(rotors[j].numRotation % 26 == 25){
 							rotors[j+1].canRotate = true;
 						}
 					}
 
+					//only rotors[0] can rotate
 					if(j != 0){
 						rotors[j].canRotate = false;
 					}
@@ -89,7 +90,7 @@ string Machine::encrypt(string input) {
 	return output;
 }
 
-//reflector  
-int reflect(int input) {
-	return ((input + 13) % 26);
-}
+////reflector
+//int Machine::reflect(int input) {
+//	return ((input + 13) % 26);
+//}

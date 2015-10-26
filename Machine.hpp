@@ -3,6 +3,7 @@
 
 #include "Plugboard.hpp"
 #include "Rotor.hpp"
+#include "Reflector.hpp"
 
 using namespace std;
 
@@ -16,8 +17,8 @@ public:
 private:
     Plugboard plugboard;
 	vector<Rotor> rotors;
-    int reflect(int input);
-
+	Reflector reflector;
+//	int reflect(int);
 };
 
 #endif

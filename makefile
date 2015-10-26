@@ -1,5 +1,5 @@
-enigma: Main.o Machine.o Plugboard.o Rotor.o 
-	g++ -o enigma Main.o Machine.o Plugboard.o Rotor.o 
+enigma: Main.o Machine.o Plugboard.o Rotor.o Reflector.o
+	g++ -o enigma Main.o Machine.o Plugboard.o Rotor.o Reflector.o
 
 Main.o: Main.cpp
 	g++ -c Main.cpp
@@ -13,7 +13,8 @@ Plugboard.o: Plugboard.cpp
 Rotor.o: Rotor.cpp
 	g++ -c Rotor.cpp
 
-
+Reflector.o: Reflector.cpp
+	g++ -c Reflector.cpp
 
 clean:
 	rm -rf enigma *.o

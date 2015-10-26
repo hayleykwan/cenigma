@@ -9,6 +9,7 @@ Rotor::Rotor(){
 	this->canRotate = false;
 	this->numRotation = 0;
 	this->offset = 0;
+	this->config = vector<int> (26);
 }
 
 void Rotor::readfile(char *filename){
@@ -29,8 +30,7 @@ void Rotor::readfile(char *filename){
 
 int Rotor::rotate(int index){
 
-	//TODO
-	return 0;
+	return (config[(index + numRotation) % 26] - (offset % 26) + 26) % 26;
 }
 
 int Rotor::rotateBackwards(int index){
