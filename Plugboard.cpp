@@ -5,10 +5,10 @@
 
 using namespace std;
 
-vector<int> config;
+//vector<int> config;
 
 Plugboard::Plugboard(char* filename){
-	ifstream pgfile(filename);
+	ifstream pgfile;
 	pgfile.open(filename, ifstream::in);
 
 	if(pgfile.good()){
@@ -41,7 +41,7 @@ int swap(int index){
 				return config[i-1];
 			}
 		}
-		//return i;
+		return i;
 	}
 }
 

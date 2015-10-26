@@ -1,6 +1,6 @@
 class Rotor{
 public:
-	Rotor::Rotor();
+	Rotor::Rotor(char *filename);
 
 private:
 

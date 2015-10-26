@@ -22,3 +22,7 @@ Rotor::Rotor(char* filename){
 		perror("Invalid file");
 	}
 }
+
+int rotate(int index){
+
+}
