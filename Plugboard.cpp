@@ -1,8 +1,17 @@
-//read Characters from , feed back Characters into standard output
 
-//behaviour:
-//read from plugboard configurations
-//get two numbers, x and y, by finding the whitespace
+Plugboard::Plugboard(char* filename){
+  ifstream ifs;
+  string String;
 
-//then map to Characters
+  
+}
+
+if(isspace){
+  //go to next char
+} else {
+  //get a number
+  //concat the previous number
+  //stoi, convert into int
+}
+
 

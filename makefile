@@ -1,19 +1,18 @@
-# edit this makefile so that running make compiles your enigma program
-
-enigma: Main.o Plugboard.o Rotors.o Reflector.o
-	g++ -o enigma Main.o Plugboard.o Rotors.o Reflector.o
+enigma: Main.o Machine.o Plugboard.o Rotors.o 
+	g++ -o enigma Main.o Machine.o Plugboard.o Rotors.o 
 
 Main.o: Main.cpp
 	g++ -c Main.cpp
+
+Machine.o: Machine.cpp
+	g++ -c Machine.cpp
 
 Plugboard.o: Plugboard.cpp
 	g++ -c Plugboard.cpp
 
 Rotors.o: Rotors.cpp
-	g++ -c Rotors.cpp
+	g++ -c Rotors.cppt this makefile so that running make compiles your enigma program
 
-Reflector.o: Reflector.cpp
-	g++ -c Reflector.cpp
 
 
 clean:
