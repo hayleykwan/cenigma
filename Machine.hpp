@@ -13,9 +13,6 @@ public:
 private:
     Plugboard plugboard;
     Rotor* rotors;
-
-    int convertToNumber(char input);
-    char convertToChar(int number);
     int reflect(int input);
 
 };
