@@ -13,7 +13,7 @@ int main(int argc, char **argv){
 	  argc--;
 	  argv++;
 
-	  Machine machine = new Machine(argc, **argv);
+	  Machine machine(argc, argv); //heap
 
 	  string input;
 	  char c;
@@ -25,7 +25,7 @@ int main(int argc, char **argv){
 		  } else if (c == EOF){
 			  break;
 		  } else {
-			  throw invalid_argument("Invalid input.");
+			  throw invalid_argument("Invalid input for Enigma encryption.");
 		  }
 	  }
 
@@ -33,11 +33,8 @@ int main(int argc, char **argv){
 
 	  cout << output << endl;
 
-	  //delete machine to free memory after printing
-	  delete machine;
-
   } else {
-	  throw invalid_argument("Invalid arguments.");
+	  throw invalid_argument("Invalid program arguments.");
   }
   return 0;
 }

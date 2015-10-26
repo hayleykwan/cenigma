@@ -4,7 +4,7 @@
 
 #include "Machine.hpp"
 #include "Plugboard.hpp"
-#include "Rotors.hpp"
+#include "Rotor.hpp"
 
 using namespace std;
 
@@ -12,17 +12,16 @@ Machine::Machine(int argc, char **argv){
 	cout << "Welcome to the Enigma machine!" << endl;
 	cout << "Please enter a set of upper case characters for the machine to encrypt." << endl;
 
-	int numRotors = argc - 1;
-	rotors = new Rotor[numRotors];
+	this->numRotors = argc - 1;
 	int indexRotor = 0;
-
 
 	while(argc > 0){
 		if(argc == 1){
-			Plugboard plugboard = new Plugboard(argv[numRotors]);
-		}else{
-			Rotor rotor = new Rotor(argv[indexRotor]);
-			rotors[indexRotor] = rotor;
+			plugboard.readfile(argv[numRotors]);
+		} else {
+			Rotor rotor;
+			rotor.readFile(argv[indexRotor]);
+			rotors.push_back(rotor);
 			indexRotor++;
 		}
 		argc--;
@@ -55,24 +54,32 @@ string encrypt(string input){
       //rotors backward
       if(numRotors > 0){
     	  for (int j = numRotors ; j > 0 ; j-- ){
-    		  //index = rotors[j].rotate_backwards(index);
+    		  index = rotors[j].rotateBackwards(index);
+
+    		  if(rotors[j].rotateOneCycle = true){
+    			  rotors[j].numRotation++;
+    			  rotors[j];
+    		  }
+
     	  }
+
       }
 
+      //go through plugboard again
 	  index = plugboard.swap(index);
- 
-      char c_output = (char)(index + 'A');
 
+	  //convert into upper case character
+	  char c_output = (char)(index + 'A');
+
+	  //append to output string
       output.push_back(c_output);
 
+      //return for printing
       return output;
-
   }
-  
-};
+}
 
 //reflector  
 int reflect(int input){
-  return ((input + 13) % 26);
-};
-
+	return ((input + 13) % 26);
+}

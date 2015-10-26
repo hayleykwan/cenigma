@@ -1,13 +1,18 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include "Rotors.hpp"
+#include "Rotor.hpp"
 
 using namespace std;
 
 vector<int> config;
 
-Rotor::Rotor(char* filename){
+Rotor::Rotor(){
+	this->rotateOneCycle = false;
+
+}
+
+void readfile(char *filename){
 	ifstream rfile;
 	rfile.open(filename, ifstream::in);
 	if(rfile.good()){
@@ -24,5 +29,15 @@ Rotor::Rotor(char* filename){
 }
 
 int rotate(int index){
+	return (config[(index + rotation) % 26] - (offset % 26)
+	            + 26) % 26;
+}
 
+int rotateBackwards(int index){
+	for(int i = 0 ; i < 26 ; i++){
+		if(index == rotate(i)){
+			return i;
+		}
+	}
+	return 0;
 }

@@ -1,5 +1,8 @@
+#ifndef MACHINE_H
+#define MACHINE_H
+
 #include "Plugboard.hpp"
-#include "Rotors.hpp"
+#include "Rotor.hpp"
 
 using namespace std;
 
@@ -12,7 +15,9 @@ public:
 
 private:
     Plugboard plugboard;
-    Rotor* rotors;
+	vector<Rotor> rotors;
     int reflect(int input);
 
 };
+
+#endif

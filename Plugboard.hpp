@@ -1,3 +1,6 @@
+#ifndef PLUGBOARD_H
+#define PLUGBOARD_H
+
 #include <vector>
 
 using namespace std;
@@ -5,8 +8,10 @@ using namespace std;
 class Plugboard{
 
 public:
-	Plugboard::Plugboard(char *filename);
+	void readfile(char *filename);
 	int swap(int index);
 	vector<int> config;
 
 };
+
+#endif

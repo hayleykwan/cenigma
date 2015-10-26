@@ -1,17 +1,17 @@
-enigma: Main.o Machine.o Plugboard.o Rotors.o 
-	g++ -o enigma Main.o Machine.o Plugboard.o Rotors.o 
+enigma: Main.o Machine.o Plugboard.o Rotor.o 
+	g++ -o enigma Main.o Machine.o Plugboard.o Rotor.o 
 
 Main.o: Main.cpp
 	g++ -c Main.cpp
 
 Machine.o: Machine.cpp
-	g++ -c Machine.cpp
+	g++ -c -std=c++11 Machine.cpp
 
 Plugboard.o: Plugboard.cpp
 	g++ -c Plugboard.cpp
 
-Rotors.o: Rotors.cpp
-	g++ -c Rotors.cppt this makefile so that running make compiles your enigma program
+Rotor.o: Rotor.cpp
+	g++ -c Rotor.cpp
 
 
 
