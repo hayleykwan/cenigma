@@ -13,7 +13,8 @@ int main(int argc, char **argv){
 		argc--;
 		argv++;
 
-		Machine machine(argc, argv); //heap
+		Machine machine(argc, argv); //stack
+		//Machine machine = new Machine(argc, argv);   --heap
 
 		string input;
 		char c;
@@ -33,13 +34,11 @@ int main(int argc, char **argv){
 
 		cout << output << endl;
 
-//		delete(machine);
+//		delete(machine);    --heap
 
 	} else {
 
 		throw invalid_argument("Invalid program arguments.");
 
 	}
-
 }
-

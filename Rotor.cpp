@@ -28,14 +28,13 @@ void Rotor::readfile(char *filename){
 			i++;
 		}
 		rfile.close();
-
 	} else {
 		perror("Invalid file");
 	}
+
 }
 
 int Rotor::rotate(int index){
-
 	return (config[(index + numRotation) % 26] - (offset % 26) + 26) % 26;
 }
 

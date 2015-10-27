@@ -11,9 +11,9 @@ void Plugboard::readfile(char *filename){
 
 	if(pgfile.good()){
 		int index;
-		while(!pgfile.eof()){
-			pgfile >> ws;
-			pgfile >> index;
+		while(pgfile >> index) {//!pgfile.eof()){
+			//pgfile >> ws;
+			//pgfile >> index;
 			config.push_back(index);
 		}
 		pgfile.close();

@@ -12,17 +12,18 @@ using namespace std;
 Machine::Machine(int argc, char **argv) {
 
 	this->numRotors = argc - 1;
+	rotors.resize(numRotors);
 	int indexRotor = 0;
 
 	while (argc > 0) {
 		if (argc == 1) {
 			plugboard.readfile(*argv);
 		} else {
-			rotors.resize(numRotors);
 			Rotor rotor;
 			rotor.readfile(*argv);
-			rotors.at(indexRotor) = rotor;
-            indexRotor++;
+			rotors[indexRotor] = rotor;
+//			rotors.push_back(rotor);
+			indexRotor++;
 		}
 		argc--;
 		argv++;
@@ -39,38 +40,41 @@ string Machine::encrypt(string input) {
 		//convert into number
 		int index = c - 'A';
 
+		//cout << index << '>';
 		//go through plugboard
 		index = plugboard.swap(index);
+		////cout << index << '>';
 
 		//rotors
-		if (numRotors > 0) {
-			for (int i = 0; i < numRotors; i++) {
-				index = rotors[i].rotate(index);
-			}
+		for (int i = 0; i < numRotors; i++) {
+//			if (numRotors > 0) {
+				index = rotors[i].rotate(index); //every other number not working
+				////cout << index << '>';
+//			}
 		}
 
 		index = reflector.reflect(index);
+		////cout << index << '>';
 
-//		index = reflect(index);
-
-		//rotors backward
+//rotors backward
 		if (numRotors > 0) {
-			for (int j = numRotors ; j > 0 ; j--) {
+			rotors[0].canRotate = true;
+			for (int j = numRotors - 1; j >= 0; j--) {
 				index = rotors[j].rotateBackwards(index);
-
-				if (rotors[j].canRotate == true) {
+				////cout << index << '>';
+				if (rotors[j].canRotate) {
 					rotors[j].numRotation++;
 					rotors[j].offset++;
 
 					//rotate the next rotor
-					if(j+1 < numRotors){
-						if(rotors[j].numRotation % 26 == 25){
-							rotors[j+1].canRotate = true;
+					if (j + 1 < numRotors) {
+						if (rotors[j].numRotation % 26 == 25) {
+							rotors[j + 1].canRotate = true;
 						}
 					}
 
 					//only rotors[0] can rotate
-					if(j != 0){
+					if (j != 0) {
 						rotors[j].canRotate = false;
 					}
 				}
@@ -79,7 +83,7 @@ string Machine::encrypt(string input) {
 
 		//go through plugboard again
 		index = plugboard.swap(index);
-
+		//cout << index << endl;
 		//convert into upper case character
 		char c_output = (char) (index + 'A');
 
