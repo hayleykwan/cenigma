@@ -16,10 +16,10 @@ Machine::Machine(int argc, char **argv) {
 
 	while (argc > 0) {
 		if (argc == 1) {
-			plugboard.readfile(argv[numRotors]);
+			plugboard.readfile(*argv);
 		} else {
 			Rotor rotor;
-			rotor.readfile(argv[indexRotor]);
+			rotor.readfile(*argv);
 			rotors.push_back(rotor);
 			indexRotor++;
 		}
@@ -30,7 +30,6 @@ Machine::Machine(int argc, char **argv) {
 
 string Machine::encrypt(string input) {
 	//prepare output string for printing
-
 	string output;
 
 	for (char& c : input) {
