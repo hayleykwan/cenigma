@@ -13,8 +13,7 @@ int main(int argc, char **argv) {
         argc--;
         argv++;
 
-//        Machine machine(argc, argv); //stack
-        Machine machine = new Machine(argc, argv);   //heap
+        Machine machine(argc, argv); //stack
 
         string input;
         char c;
@@ -33,8 +32,6 @@ int main(int argc, char **argv) {
         string output = machine.encrypt(input);
 
         cout << output << endl;
-
-		delete(machine);    //heap
 
     } else {
 

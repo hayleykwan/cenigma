@@ -84,3 +84,4 @@ string Machine::encrypt(string input) {
 
     return output;
 }
+
