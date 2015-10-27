@@ -3,12 +3,12 @@
 
 #include <vector>
 
-class Plugboard{
+class Plugboard {
 
 public:
-	void readfile(char *filename);
-	int swap(int index);
-	std::vector<int> config;
+    void readfile(char *filename);
+    int swap(int index);
+    std::vector<int> config;
 
 };
 

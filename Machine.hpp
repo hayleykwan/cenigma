@@ -5,18 +5,17 @@
 #include "Rotor.hpp"
 #include "Reflector.hpp"
 
+class Machine {
 
-class Machine{
-  
 public:
-	Machine(int, char**);
+    Machine(int, char**);
     std::string encrypt(std::string input);
     int numRotors;
 
 private:
     Plugboard plugboard;
-	std::vector<Rotor> rotors;
-	Reflector reflector;
+    std::vector<Rotor> rotors;
+    Reflector reflector;
 };
 
 #endif

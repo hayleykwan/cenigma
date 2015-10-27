@@ -3,19 +3,18 @@
 
 #include <vector>
 
-class Rotor{
+class Rotor {
 
 public:
-	Rotor();
-	bool canRotate;
-	int numRotation;
-	int offset;
-	std::vector<int> config;
-	void readfile(char *filename);
+    Rotor();
+    bool canRotate;
+    int numRotation;
+    int offset;
+    std::vector<int> config;
+    void readfile(char *filename);
 
-	int rotate(int index);
-	int rotateBackwards(int index);
-
+    int rotate(int index);
+    int rotateBackwards(int index);
 };
 
 #endif
