@@ -11,7 +11,6 @@ public:
 	int numRotation;
 	int offset;
 	std::vector<int> config;
-//	int* config;
 	void readfile(char *filename);
 
 	int rotate(int index);

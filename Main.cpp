@@ -8,34 +8,38 @@ using namespace std;
 
 int main(int argc, char **argv){
 
-  if(argc > 1){
+	if(argc > 1){
 
-	  argc--;
-	  argv++;
+		argc--;
+		argv++;
 
-	  Machine machine(argc, argv); //heap
+		Machine machine(argc, argv); //heap
 
-	  string input;
-	  char c;
-	  while (cin >> c){
-		  if(isupper(c)){
-			  input.push_back(c);
-		  } else if (isspace(c) || c == '\t' || c == '\r' || c == '\n'){
-			  continue;
-		  } else if (c == EOF){
-			  break;
-		  } else {
-			  throw invalid_argument("Invalid input for Enigma encryption.");
-		  }
-	  }
+		string input;
+		char c;
+		while (cin >> c){
+			if(isupper(c)){
+				input.push_back(c);
+			} else if (isspace(c) || c == '\t' || c == '\r' || c == '\n'){
+				continue;
+			} else if (c == EOF){
+				break;
+			} else {
+				throw invalid_argument("Invalid input for Enigma encryption.");
+			}
+		}
 
-	  string output = machine.encrypt(input);
+		string output = machine.encrypt(input);
 
-	  cout << output << endl;
+		cout << output << endl;
 
-  } else {
-	  throw invalid_argument("Invalid program arguments.");
-  }
-  return 0;
+//		delete(machine);
+
+	} else {
+
+		throw invalid_argument("Invalid program arguments.");
+
+	}
+
 }
 

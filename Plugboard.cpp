@@ -24,6 +24,7 @@ void Plugboard::readfile(char *filename){
 }
 
 int Plugboard::swap(int index){
+
 	for(int i = 0 ; i < config.size(); i++){
 		if(index == config[i]){
 			//if at even index
@@ -36,5 +37,6 @@ int Plugboard::swap(int index){
 			}
 		}
 	} //not in vector
+//	cout << index;
 	return index;
 }

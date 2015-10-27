@@ -18,10 +18,11 @@ Machine::Machine(int argc, char **argv) {
 		if (argc == 1) {
 			plugboard.readfile(*argv);
 		} else {
+			rotors.resize(numRotors);
 			Rotor rotor;
 			rotor.readfile(*argv);
-			rotors.push_back(rotor);
-			indexRotor++;
+			rotors.at(indexRotor) = rotor;
+            indexRotor++;
 		}
 		argc--;
 		argv++;
@@ -29,13 +30,14 @@ Machine::Machine(int argc, char **argv) {
 }
 
 string Machine::encrypt(string input) {
+
 	//prepare output string for printing
 	string output;
 
-	for (char& c : input) {
+	for (char c : input) {
 
 		//convert into number
-		int index = (int) (c) - 'A';
+		int index = c - 'A';
 
 		//go through plugboard
 		index = plugboard.swap(index);
